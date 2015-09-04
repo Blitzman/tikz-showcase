@@ -1,0 +1,83 @@
+%
+% Created by Albert Garcia < albertgg93@gmail.com >
+% Feel free to use this work under the CC0 1.0 Universal license :)
+%
+\documentclass{article}
+% -----------------------------------------------------------------------------
+% Miscellaneous packages
+% -----------------------------------------------------------------------------
+\usepackage{mathptmx}
+\usepackage{relsize}
+\usepackage[binary-units = true,load-configurations=binary]{siunitx}
+\DeclareSymbolFont{symbolsb}{OMS}{cmsy}{m}{n}
+\SetSymbolFont{symbolsb}{bold}{OMS}{cmsy}{b}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{symbolsb}
+% -----------------------------------------------------------------------------
+% Tikz and libraries
+% -----------------------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{shadows}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+\usetikzlibrary{scopes}
+\usetikzlibrary{shadows}
+\usetikzlibrary{shapes.symbols}
+\usetikzlibrary{intersections}
+\usetikzlibrary{calc}
+\makeatletter
+\tikzset{nomorepostaction/.code=\let\tikz@postactions\pgfutil@empty}
+\makeatother
+% -----------------------------------------------------------------------------
+% PGFplots and libraries
+% -----------------------------------------------------------------------------
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{statistics}
+\usepackage{pgf}
+% -----------------------------------------------------------------------------
+% Custom colors (based on FZJ template by Ivo Kabadshow)
+% -----------------------------------------------------------------------------
+\usepackage{color}
+\definecolor{blitzblue50}{RGB}{0,91,130}
+\definecolor{blitzblue35}{RGB}{166,198,211}
+\definecolor{blitzblue30}{RGB}{178,206,217}
+\definecolor{fzjblue20}{RGB}{204,222,236}
+\definecolor{blitzblue10}{RGB}{229,239,242}
+\definecolor{blitzgray80}{RGB}{81,81,81}
+\definecolor{blitzgray50}{RGB}{156,156,156}
+\definecolor{blitzgray30}{RGB}{185,185,185}
+\definecolor{blitzgray20}{RGB}{204,204,204}
+\definecolor{blitzgray10}{RGB}{229,229,229}
+\definecolor{blitzgray05}{RGB}{242,242,242}
+\definecolor{blitzwhite}{RGB}{255,255,255}
+\definecolor{blitzbranchred}{RGB}{212,45,18}
+\definecolor{blitzbranchyellow}{RGB}{230,175,17}
+\definecolor{blitzbranchblue}{RGB}{0,131,190}
+\definecolor{blitzblue}{RGB}{0,91,130}
+\definecolor{blitzlightblue}{RGB}{110,159,189}
+\definecolor{blitzred}{RGB}{175,90,80}
+\definecolor{blitzlightred}{RGB}{198,141,132}
+\definecolor{blitzgreen}{RGB}{125,150,110}
+\definecolor{blitzlightgreen}{RGB}{164,181,153}
+\definecolor{blitzyellow}{RGB}{215,170,80}
+\definecolor{blitzlightyellow}{RGB}{235,212,167}
+% -----------------------------------------------------------------------------
+% Layers
+% -----------------------------------------------------------------------------
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{bg_input}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{bg_input,background,main,foreground}
+% Template for kTikz/qTikz
+\usepackage[active,pdftex,tightpage]{preview}
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+\begin{document}
+<>
+\end{document}
