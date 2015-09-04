@@ -1,0 +1,90 @@
+%
+% Created by Albert Garcia < albertgg93@gmail.com >
+% Feel free to use this work under the CC0 1.0 Universal license :)
+%
+\begin{tikzpicture}
+%
+	\pgfmathsetmacro{\p}{15}
+	\pgfmathsetmacro{\pplus}{\p+1}
+%
+	\tikzset{
+		coefficient/.style = {
+			rectangle,
+			minimum height=1 em,
+			minimum width=1 em,
+			draw=blitzblue50,
+			anchor=south west,
+			inner sep=0 em,
+			line cap=rect,},
+		coefficientzoomed/.style = {
+			black,
+			coefficient,
+			line cap=rounded,
+			very thick,
+			minimum height=8 em,
+			minimum width=8 em,},
+		coeffmatrixline/.style = {
+			blitzblue50,
+			line cap=rect,
+			thick,},
+		helperline/.style = {
+			blitzblue50,
+			line cap=rounded,
+			thin,},
+		legendlabel/.style = {
+			right=0.25 em,
+			anchor=#1,
+			black,
+			fill=none,
+			inner sep=0 em, 
+			outer sep=0 em,
+			font = \smaller,
+		},}
+% HORIZONTAL HELPER LINES
+\foreach \i in {0,...,\p} {
+	\pgfmathsetmacro{\m}{mod(\i, 2)}
+	\pgfmathsetmacro{\warpid}{mod(\i,4)}
+	\ifnum0=\m
+		\draw [fill=none, draw=blitzgray10] (0 em, \i em) rectangle node [left = 0 em, pos= 0, anchor=south east] {} (\pplus em, \i em + 1 em);
+	\else
+		\draw [fill=blitzgray10!70, draw=blitzgray10] (0 em, \i em) rectangle node [left = 0 em, pos= 0, anchor=south east] {} (\pplus em, \i em + 1 em);
+	\fi
+}
+% AXIS
+\draw [helperline,-latex] (-2 em, 0 em) -- node [pos=0.5, fill=white] {$m$} (-2 em, \pplus em);
+\draw [helperline,-latex] (0 em, -2 em) -- node [pos=0.5, fill=white] {$l$} (\pplus em, -2 em);
+% VERTICAL HELPER LINES
+\foreach \i in {0,...,\p} {
+	\pgfmathsetmacro{\m}{mod(\i, 2)}
+	\ifnum0=\m
+		%\draw [fill=blitzgray10!5, draw=none] (\i em, 0 em) rectangle (\i em + 1 em, \pplus em);
+	\else
+		\draw [draw=blitzgray10, opacity=0.5] (\i em, 0 em) rectangle node [below= 0 em, pos= 0, anchor=north west, blitzgray80, opacity=1] {\phantom{\smaller \smaller $b_{\i}$}} (\i em + 1 em, \pplus em);
+	\fi
+}
+% COEFFICIENTS
+\foreach \i in {0,...,\p} {
+	\foreach \j in {0,...,\i} {
+		\node (c\i\j) [coefficient] at (\i em,\j em) {};
+	}
+}
+% TRIANGLE
+  \draw[coeffmatrixline, left color=blitzblue10, right color=blitzblue50, opacity=.75] (0,0)
+    \foreach \x in {0,...,\p}
+      { (\x em,\x em) |- ++(1 em,1 em) }
+     |- (0 em, 0 em);
+%
+\node (legend) [outer sep=0, rectangle, left color=blitzblue10, right color=blitzblue50, minimum height=1 em, minimum width=4 em, rotate=90, shading angle=180, anchor=north east] at (2 em, 15 em) {};
+\node [legendlabel=north west] at ([yshift=-0.15em]legend.south east) {more precision};
+\node [legendlabel=south west] at ([yshift=0.10em]legend.south west) {less precision};
+%
+\node [coefficient, thick, pattern=north east lines, pattern color=blitzblue50] at (c106.south west) {};
+\node (c0) [coefficientzoomed] at (\pplus em + 8 em, 3 em) {};
+\draw [helperline, thick] (c106.north east) -- ([yshift=-0.025 em]c0.north east);
+\draw [helperline, thick] (c106.north west) -- ([yshift=-0.025 em]c0.north west);
+\draw [helperline, thick] (c106.south east) -- ([yshift=+0.025 em]c0.south east);
+\draw [helperline, thick] (c106.south west) -- ([yshift=+0.025 em]c0.south west);
+\node (c0) [coefficientzoomed, fill=white, opacity=0.75] at (\pplus em + 8 em, 3 em) {$a_{l,m}+\mathrm{i}b_{l,m}$};
+\node [above = 1 em of c0] {Multipole moment: $\omega_{l,m}$};
+\node [below= 1 em of c0] {or Local moment: $\mu_{l,m}$};
+\end{tikzpicture}
